@@ -1,7 +1,7 @@
 import cv2
 import time
 
-cap=cv2.VideoCapture('G:\\ustc\\bishe\\Captures\\002.WMV')
+cap=cv2.VideoCapture('D:\\AR\\fatigue_driving\\Fatigue-Driven-Detection-Based-on-CNN\\test.jpg')
 while cap.isOpened():
 	ret,frame=cap.read()
 	cv2.imshow('capture', frame)

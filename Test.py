@@ -21,7 +21,7 @@ net = torch.nn.DataParallel(net)
 net.train(mode=False)
 net.load_state_dict(torch.load('./weights/ssd300_VOC_100000.pth',map_location=lambda storage, loc: storage))
 img_id = 60
-name='10'
+name='test'
 image = cv2.imread('./'+name+'.jpg', cv2.IMREAD_COLOR)
 x = cv2.resize(image, (300, 300)).astype(np.float32)
 x -= (104.0, 117.0, 123.0)
@@ -66,7 +66,7 @@ for i in range(detections.size(1)):
         score = detections[0,i,j,0]
         label_name = labels[i-1]
         display_txt = '%s: %.2f'%(label_name, score)
-        pt = (detections[0,i,j,1:]*scale).cpu().numpy()
+        pt = (detections[0,i,j,1:]*scale).cpu().numpy().astype(int)
         coords = (pt[0], pt[1]), pt[2]-pt[0]+1, pt[3]-pt[1]+1
         color = colors_tableau[i]
         cv2.rectangle(image,(pt[0],pt[1]), (pt[2],pt[3]), color, 2)

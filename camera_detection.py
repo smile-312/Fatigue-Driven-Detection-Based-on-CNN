@@ -101,7 +101,7 @@ while(True):
 			if label_name=='open_mouth':
 				flag_Y=True
 			display_txt='%s:%.2f'%(label_name,score)
-			pt=(detections[0,i,j,1:]*scale).cpu().numpy()
+			pt=(detections[0,i,j,1:]*scale).cpu().numpy().astype(int)
 			coords=(pt[0],pt[1]),pt[2]-pt[0]+1,pt[3]-pt[1]+1
 			color=colors_tableau[i]
 			cv2.rectangle(img,(pt[0],pt[1]),(pt[2],pt[3]),color,2)
